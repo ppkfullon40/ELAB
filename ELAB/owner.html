@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="elab.css">
+    <link href="https://fonts.googleapis.com/css2?family=Staatliches&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <title>ELAB | Owner Dashboard</title>
+    <style>
+      .proof-modal {
+        position: fixed;
+        inset: 0;
+        display: none;
+        justify-content: center;
+        align-items: center;
+        background: rgba(0,0,0,0.7);
+        z-index: 9999;
+      }
+      .proof-modal.show {
+        display: flex;
+      }
+      .proof-modal-content {
+        position: relative;
+        max-width: 90%;
+        max-height: 90%;
+        background: #111;
+        border-radius: 12px;
+        overflow: hidden;
+        padding: 10px;
+      }
+      .proof-modal-content img {
+        width: 100%;
+        height: auto;
+        max-height: 85vh;
+        display: block;
+        border-radius: 8px;
+      }
+      .proof-modal-close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: rgba(255,255,255,0.15);
+        border: none;
+        color: white;
+        font-size: 24px;
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        cursor: pointer;
+      }
+      .proof-view-btn {
+        border: 1px solid #ffb703;
+        background: black;
+        color: #ffb703;
+        padding: 8px 12px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-family: 'Staatliches', sans-serif;
+      }
+      .proof-view-btn:hover {
+        background: #ffb703;
+        color: black;
+      }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a class="anav">ELAB</a>
+        <ul class="menu"> 
+            <li class="navtext"><a href="index.html">HOME</a></li>
+            <li class="navtext"><a href="order_history.html">HISTORY</a></li>
+            <li class="navtext"><a href="#" id="logout-btn" style="display:none; cursor:pointer;">LOGOUT</a></li>
+        </ul>
+    </nav>
+
+    <img src="elab main.jpg" class="mainpg">
+
+<h1 class="helabtle">OWNER DASHBOARD</h1>
+<p class="pelabtle">"Manage Your ELAB Business"</p>
+
+<!-- LOGIN SECTION -->
+<div id="login-section" class="login-container">
+    <div class="login-box">
+        <h2>Owner Login</h2>
+        <form id="login-form">
+            <input type="email" id="login-email" placeholder="Email" required>
+            <input type="password" id="login-password" placeholder="Password" required>
+            <button type="submit" class="login-btn">Login</button>
+        </form>
+        <p id="login-error" class="error-msg"></p>
+    </div>
+</div>
+
+<!-- DASHBOARD SECTION (Hidden until logged in) -->
+<div id="dashboard-section" style="display:none;">
+    
+    <!-- ANNOUNCEMENT CREATION FORM -->
+    <div class="announcement-form-container">
+        <h2>Create Announcement</h2>
+        <form id="announcement-form">
+            <input type="text" id="announce-title" placeholder="Announcement Title" required>
+            <textarea id="announce-description" placeholder="Announcement Description" required rows="4"></textarea>
+            <button type="submit" class="create-btn">Create Announcement</button>
+        </form>
+        <p id="announce-msg" class="message"></p>
+    </div>
+
+    <!-- LIVE ORDERS SECTION -->
+    <div class="dashboard-header">
+        <h1>LIVE ORDERS </h1>
+    </div>
+
+    <div class="list-container">
+        <table class="order-table">
+            <thead>
+                <tr>
+                    <th>TIME</th>
+                    <th>CUSTOMER</th>
+                    <th>PHONE</th>
+                    <th>TOTAL</th>
+                    <th>PROOF</th>
+                    <th>STATUS</th>
+                    <th>ACTION</th>
+                </tr>
+            </thead>
+            <tbody id="orders-list">
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div id="proof-modal" class="proof-modal" onclick="closeProofModal()">
+  <div class="proof-modal-content" onclick="event.stopPropagation()">
+    <button type="button" class="proof-modal-close" onclick="closeProofModal()">×</button>
+    <img id="proof-modal-image" src="" alt="Proof of Payment">
+  </div>
+</div>
+
+<script src="script.js"></script>
+
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+  import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+  import { getDatabase, ref, push, onValue, update } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyAVTxC5DoJs4apNkUEp6HgqJMOdNi_2Umw",
+    authDomain: "elab-orders.firebaseapp.com",
+    projectId: "elab-orders",
+    storageBucket: "elab-orders.appspot.com",
+    messagingSenderId: "139917810077",
+    appId: "1:139917810077:web:32665c513cdcd5744e3774",
+    databaseURL: "https://elab-orders-default-rtdb.asia-southeast1.firebasedatabase.app"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const db = getDatabase(app);
+
+  let currentUser = null;
+
+  // Check if user is logged in
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      currentUser = user;
+      document.getElementById('login-section').style.display = 'none';
+      document.getElementById('dashboard-section').style.display = 'block';
+      document.getElementById('logout-btn').style.display = 'inline-block';
+      loadOrders();
+    } else {
+      currentUser = null;
+      document.getElementById('login-section').style.display = 'block';
+      document.getElementById('dashboard-section').style.display = 'none';
+      document.getElementById('logout-btn').style.display = 'none';
+    }
+  });
+
+  // LOGIN
+  document.getElementById('login-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const email = document.getElementById('login-email').value;
+    const password = document.getElementById('login-password').value;
+
+    signInWithEmailAndPassword(auth, email, password)
+      .catch((error) => {
+        document.getElementById('login-error').innerText = 'Login failed: ' + error.message;
+      });
+  });
+
+  // LOGOUT
+  document.getElementById('logout-btn').addEventListener('click', () => {
+    signOut(auth);
+  });
+
+  // CREATE ANNOUNCEMENT
+  document.getElementById('announcement-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const title = document.getElementById('announce-title').value;
+    const description = document.getElementById('announce-description').value;
+    const msgElement = document.getElementById('announce-msg');
+
+    msgElement.innerText = 'Saving announcement...';
+
+    try {
+      const announcementData = {
+        title: title,
+        description: description,
+        ownerEmail: currentUser.email,
+        timestamp: new Date().toLocaleString(),
+        createdAt: Date.now()
+      };
+
+      await push(ref(db, 'announcements'), announcementData);
+      msgElement.innerText = 'Announcement created successfully!';
+      document.getElementById('announcement-form').reset();
+      setTimeout(() => msgElement.innerText = '', 3000);
+    } catch (error) {
+      console.error('Announcement save error:', error);
+      msgElement.innerText = 'Error: ' + error.message;
+    }
+  });
+
+  // LOAD ORDERS
+  function loadOrders() {
+    onValue(ref(db, 'orders'), (snapshot) => {
+      const ordersList = document.getElementById('orders-list');
+      ordersList.innerHTML = '';
+      const orders = snapshot.val();
+      if (orders) {
+        Object.entries(orders).forEach(([key, order]) => {
+          if (order.status === 'Completed' || order.status === 'Rejected') return;
+
+          const proofId = `proof_${key}`;
+          window.proofCache = window.proofCache || {};
+          window.proofCache[proofId] = order.proofOfPayment;
+
+          const row = `
+            <tr>
+              <td>${order.time || order.timestamp || 'N/A'}</td>
+              <td>${order.name || 'N/A'}</td>
+              <td>${order.phone || 'N/A'}</td>
+              <td>₱${order.total || '0'}</td>
+              <td>
+                ${order.proofOfPayment ? `<button type="button" class="proof-view-btn" onclick="showProofModal('${proofId}')">View</button>` : 'N/A'}
+              </td>
+              <td>${order.status || 'Pending'}</td>
+              <td>
+                <button class="done-btn" onclick="markAsDone('${key}')">Done</button>
+                <button class="reject-btn" onclick="markAsRejected('${key}')">Reject</button>
+              </td>
+            </tr>
+          `;
+          ordersList.innerHTML += row;
+        });
+      }
+    });
+  }
+
+  window.showProofModal = (proofId) => {
+    const proofModal = document.getElementById('proof-modal');
+    const proofImage = document.getElementById('proof-modal-image');
+    if (!proofModal || !proofImage) return;
+    const proofData = window.proofCache && window.proofCache[proofId];
+    if (!proofData) return;
+    proofImage.src = proofData;
+    proofModal.classList.add('show');
+  };
+
+  window.closeProofModal = () => {
+    const proofModal = document.getElementById('proof-modal');
+    const proofImage = document.getElementById('proof-modal-image');
+    if (!proofModal || !proofImage) return;
+    proofModal.classList.remove('show');
+    proofImage.src = '';
+  };
+
+  window.markAsDone = async (orderId) => {
+    if (!confirm('Mark this order as completed?')) return;
+    try {
+      await update(ref(db, `orders/${orderId}`), { status: 'Completed' });
+      alert('Order moved to history.');
+    } catch (error) {
+      alert('Error: ' + error.message);
+    }
+  };
+
+  window.markAsRejected = async (orderId) => {
+    if (!confirm('Reject this order?')) return;
+    try {
+      await update(ref(db, `orders/${orderId}`), { status: 'Rejected' });
+      alert('Order rejected and moved to history.');
+    } catch (error) {
+      alert('Error: ' + error.message);
+    }
+  };
+</script>
+
+</body>
+</html>

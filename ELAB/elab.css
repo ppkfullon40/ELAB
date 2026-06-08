@@ -1,0 +1,1208 @@
+*{
+    text-decoration: none;
+    margin: none;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.navtext {
+  font-family: "Staatliches", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  color: white;
+  display: inline-block;
+  list-style: none;
+}
+
+.navtext a {
+    color: white;
+    text-decoration: none; 
+    margin-left: 25px;
+}
+
+.navtext a:hover {
+    color: #ffb703;
+}
+
+.navbar{
+    background-color: black; padding-right: 15px; padding-left: 15px;
+    display: flex; align-items: center;
+}
+
+.anav{
+  font-family: "Staatliches", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  color:white;
+  font-size: 35px;
+}
+
+li{
+    color: white;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; 
+}
+
+.helabtle{
+font-family: "Merriweather", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
+    text-align: center;
+    margin-top: 10px;
+    font-size: 70px;
+}
+
+.pelabtle{
+     text-align: center;
+}
+
+.mainpg{
+    width: 350px;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+    border-radius: 15px;
+}
+
+.bestseller{
+    font-family: "Staatliches", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color:black;
+    font-size: 35px;
+    text-align: center;
+    margin-top: 100px;
+}
+
+
+.cbimg-container {
+    background: white;
+    padding: 15px;
+    padding-bottom: 40px; /* Extra space for a "caption" vibe */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    transform: rotate(-2deg); /* The "Manly" tilt */
+    border: 1px solid #ddd;
+    max-width: 400px;
+    margin: 40px auto;
+    text-align: center;
+    font-family: "Staatliches", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: black;
+    font-size: 25px;
+}
+
+.cbimg {
+    width: 100%;
+    filter: contrast(1.1); /* Makes the food colors pop */ 
+    text-align: center;
+}
+
+.textbs p{
+font-family: "Merriweather", serif;
+    font-size: 18px;
+    line-height: 1.6;
+    color: #333
+}
+
+.best-seller-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px; /* Space between the frame and the text */
+    max-width: 900px;
+    margin: 60px auto;
+}
+
+.main-menu {
+    display: flex;
+    flex-direction: row; /* Arrows and Content in a line */
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    background: black;
+    padding: 60px;
+}
+
+.button-menu{
+    background-color: #ffb703;
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-family: "Staatliches", sans-serif;
+    display: flex;
+    margin: 60px auto;
+
+}
+
+.arrow{
+    font-family: "Staatliches", sans-serif;
+    font-size: 50px;
+    color: #ffb703; /* That ELAB Yellow */
+    cursor: pointer;
+    user-select: none; /* Prevents highlighting the text when clicking fast */
+    transition: 0.3s;
+}
+
+.menu-content {
+    display: flex;
+    flex-direction: column; /* Text on top of Button */
+    align-items: center;    /* Center them horizontally inside this group */
+    gap: 15px;
+}
+
+.main-menu-text {
+font-family: "Merriweather", serif;
+    font-size: 30px;
+    color: white;
+}
+
+.flea-market-black {
+    padding: 100px 20px;
+    color: white;
+    text-align: center;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    /* THE FIX: We stack the Grid ON TOP of the Gradient */
+    background-image: 
+        linear-gradient(rgba(255, 183, 3, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 183, 3, 0.05) 1px, transparent 1px),
+        radial-gradient(circle, #1a1a1a 0%, #000000 100%);
+
+    background-size: 50px 50px, 50px 50px, auto; /* Match sizes to the layers above */
+    background-position: -1px -1px, -1px -1px, center;
+    
+    /* A bit more glow in the middle to make it pop */
+    box-shadow: inset 0 0 150px rgba(255, 183, 3, 0.1);
+}
+
+.flea-title {
+    font-family: "Merriweather", serif;
+    font-size: 50px;
+    color: #ffb703; /* ELAB Yellow */
+    margin-bottom: 10px;
+}
+
+.flea-subtitle {
+    font-family: "Merriweather", serif;
+    font-size: 16px;
+    margin-bottom: 50px;
+    color: #888;
+}
+
+/* THE GRID SYSTEM */
+.flea-grid {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.flea-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid #333; /* Subtle border so it doesn't bleed into black */
+    transition: 0.3s;
+}
+
+/* Hover effect: Makes the poster "glow" */
+.flea-item img:hover {
+    border-color: #ffb703;
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(255, 183, 3, 0.3);
+}
+
+.main-poster {
+    flex: 2; /* Makes this box twice as wide */
+}
+
+.flea-column {
+    flex: 1; /* Makes this column narrower */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.slider-container {
+    position: relative; /* This lets us "pin" arrows to the sides */
+    width: 100%;
+    overflow: hidden;   /* CRITICAL: This hides the slides that are waiting in line */
+    background: black;
+}
+
+.slider-track {
+    display: flex;      /* Sits the slides side-by-side in a long line */
+    transition: transform 0.5s ease-in-out; /* This makes the "slide" feel smooth */
+}
+
+.slide {
+    min-width: 100%;    /* Each slide must take up exactly 100% of the window */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Designing the Arrows */
+.prev-btn, .next-btn {
+    position: absolute; /* Floats them on top of the images */
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 183, 3, 0.7); /* ELAB Yellow with some transparency */
+    color: black;
+    border: none;
+    padding: 20px 15px;
+    cursor: pointer;
+    font-size: 24px;
+    z-index: 10;
+}
+
+.prev-btn { left: 0; border-radius: 0 5px 5px 0; }
+.next-btn { right: 0; border-radius: 5px 0 0 5px; }
+
+html{
+    scroll-behavior: smooth;
+}
+
+.social-bridge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    background: white;
+    border: 2px solid #ffb703; /* ELAB Yellow border */
+    padding: 10px 20px;
+    width: fit-content;
+    margin: 0 auto -25px auto; /* The -25px pulls it down onto the black part */
+    position: relative;
+    z-index: 100; /* Makes sure it stays on top of the black section */
+    border-radius: 50px; /* Pill shape */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.follow-text {
+    font-family: "Staatliches", sans-serif;
+    font-size: 18px;
+    color: black;
+    letter-spacing: 1px;
+}
+
+.social-icons {
+    display: flex;
+    gap: 12px;
+}
+
+.social-link img {
+    width: 24px;
+    height: 24px;
+    transition: transform 0.3s ease;
+}
+
+.social-link img:hover {
+    transform: scale(1.2); /* Pop effect on hover */
+}
+
+/* Ensure the slider container doesn't overlap the box */
+.slider-container {
+    padding-top: 40px; /* Adds space for the box to sit comfortably */
+}
+
+
+
+/* Order Page Specifics */
+.order-page {
+    background-color: #f4f4f4;
+}
+
+.order-container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+}
+
+.order-title {
+    font-family: "Staatliches", sans-serif;
+    font-size: 50px;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.order-step {
+    background: white;
+    padding: 30px;
+    margin-bottom: 20px;
+    border-left: 8px solid #ffb703; /* ELAB Yellow highlight */
+    box-shadow: 5px 5px 0px #000;
+    position: relative;
+}
+
+.step-num {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-family: "Staatliches", sans-serif;
+    font-size: 40px;
+    color: #eee;
+}
+
+.order-step h2 {
+    font-family: "Staatliches", sans-serif;
+    margin-bottom: 20px;
+}
+
+/* Custom Radio Cards */
+.option-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.option-card input {
+    display: none; /* Hide the ugly default radio circle */
+}
+
+.card-content {
+    border: 2px solid #ddd;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.option-card input:checked + .card-content {
+    border-color: #ffb703;
+    background: #fffcf0;
+    transform: scale(1.05);
+}
+
+.order-input {
+    width: 100%;
+    padding: 15px;
+    font-family: "Merriweather", serif;
+    border: 2px solid #eee;
+    margin-bottom: 10px;
+}
+
+.order-submit-btn {
+    width: 100%;
+    background: black;
+    color: #ffb703;
+    font-family: "Staatliches", sans-serif;
+    font-size: 28px;
+    padding: 20px;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 20px;
+}
+
+.order-submit-btn:hover {
+    background: #ffb703;
+    color: black;
+}
+
+
+
+.menu-section {
+    padding: 80px 20px;
+    background: #fff;
+    text-align: center;
+}
+
+.menu-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Centers the bottom 2 items */
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.fuel-card {
+    flex: 1 1 350px; /* Base width of 350px, grows to fill space */
+    max-width: 380px;
+    background: #000; /* Card is black */
+    color: #fff;
+    border-radius: 0; /* Sharp edges for that rugged look */
+    overflow: hidden;
+    box-shadow: 10px 10px 0px #ffb703; /* ELAB Yellow block shadow */
+    transition: transform 0.3s ease;
+}
+
+.fuel-card:hover {
+    transform: translateY(-10px);
+}
+
+.fuel-img {
+    position: relative;
+    height: 300px;
+}
+
+.fuel-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(20%) contrast(1.1);
+}
+
+.fuel-price {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: #ffb703;
+    color: #000;
+    font-family: "Staatliches", sans-serif;
+    font-size: 24px;
+    padding: 10px 20px;
+    clip-path: polygon(15% 0, 100% 0, 100% 100%, 0% 100%); /* Adds a cool slant */
+}
+
+.fuel-content {
+    padding: 20px;
+    text-align: left;
+}
+
+.fuel-content h3 {
+    font-family: "Staatliches", sans-serif;
+    font-size: 22px;
+    margin-bottom: 5px;
+    letter-spacing: 1px;
+    color: #ffb703;
+}
+
+.fuel-content p {
+    font-family: "Merriweather", serif;
+    font-size: 13px;
+    color: #888;
+    margin: 0;
+}
+.menu-header {
+    font-family: "Staatliches", sans-serif;
+    font-size: clamp(40px, 8vw, 70px); /* Responsive size: gets smaller on phones */
+    color: #000;
+    text-align: center;
+    margin-bottom: 0px; /* Bring it close to the subheader */
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    position: relative;
+    display: inline-block;
+    width: 100%; /* Keeps it centered */
+}
+
+/* Optional: Adds a small yellow underline bar under the title */
+.menu-header::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: #ffb703;
+    margin: 10px auto;
+}
+
+.menu-subheader {
+    font-family: "Merriweather", serif;
+    font-size: 16px;
+    font-style: italic;
+    color: #666;
+    text-align: center;
+    margin-bottom: 50px; /* Space before the food cards start */
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* Center the entire thing on the page */
+.order-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh; /* Centers it vertically on the screen */
+    padding: 20px;
+}
+
+.order-card-wrapper {
+    width: 100%;
+    max-width: 450px; /* Makes the card small and compact */
+}
+
+.small-card {
+    background: white;
+    padding: 40px 30px;
+    border-top: 10px solid #ffb703; /* ELAB Yellow Accent at the top */
+    border-left: none; /* Removed the side border for a cleaner card look */
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1); /* Soft shadow for depth */
+    text-align: center;
+    position: relative;
+}
+
+.small-card h2 {
+    font-family: "Staatliches", sans-serif;
+    font-size: 32px;
+    margin-bottom: 25px;
+    letter-spacing: 1px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Space between inputs */
+    margin-bottom: 25px;
+}
+
+.order-input {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #f0f0f0;
+    background: #fafafa;
+    font-family: "Merriweather", serif;
+    font-size: 14px;
+    outline: none;
+    transition: 0.3s;
+}
+
+.order-input:focus {
+    border-color: #ffb703;
+    background: white;
+}
+
+.order-submit-btn {
+    width: 100%;
+    background: black;
+    color: #ffb703;
+    font-family: "Staatliches", sans-serif;
+    font-size: 24px;
+    padding: 15px;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+    text-transform: uppercase;
+}
+
+.order-submit-btn:hover {
+    background: #ffb703;
+    color: black;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(255, 183, 3, 0.4);
+}
+
+/* Make the 03 number more subtle in the corner */
+.small-card .step-num {
+    top: 15px;
+    right: 20px;
+    font-size: 30px;
+    opacity: 0.1; /* Very faint so it doesn't distract */
+}
+
+.order-section {
+    background-color: #f9f9f9; /* A very light gray so it's not "stark" white */
+    padding: 100px 20px;
+    text-align: center;
+}
+
+.order-title {
+    font-family: "Staatliches", sans-serif;
+    font-size: 50px;
+    margin-bottom: 60px;
+    letter-spacing: 2px;
+}
+
+.order-container {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    max-width: 1100px;
+    margin: 0 auto;
+    flex-wrap: wrap; /* On phones, this will stack the steps vertically automatically! */
+}
+
+.order-step {
+    flex: 1;
+    min-width: 250px;
+    padding: 20px;
+}
+
+.step-number {
+    font-family: "Staatliches", sans-serif;
+    font-size: 80px;
+    color: #ffb703; /* ELAB Yellow */
+    line-height: 1;
+    margin-bottom: 20px;
+    opacity: 0.8;
+}
+
+.order-step h3 {
+    font-family: "Staatliches", sans-serif;
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.order-step p {
+    font-family: "Merriweather", serif;
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
+}
+
+.order-now-btn {
+    margin-top: 60px;
+    background-color: black;
+    color: #ffb703;
+    border: 2px solid black;
+    padding: 15px 40px;
+    font-family: "Staatliches", sans-serif;
+    font-size: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+
+}
+
+.order-now-btn:hover {
+    background-color: #ffb703;
+    color: black;
+}
+
+.order-now-btn a {
+    color: #ffb703; 
+    text-decoration: none; /* Removes the underline */
+}
+
+.order-now-btn:hover a {
+    color: black;
+}
+
+
+.quantity-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Centers buttons under the text */
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.btn-plus, .btn-minus {
+    background-color: #ffb703; /* ELAB Yellow */
+    color: black;
+    border: none;
+    width: 30px;
+    height: 30px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: 0.2s;
+}
+
+.btn-plus:hover, .btn-minus:hover {
+    background-color: #e5a502;
+    transform: scale(1.1);
+}
+
+.item-qty {
+    font-family: "Staatliches", sans-serif;
+    font-size: 20px;
+    color: white; /* Assuming the card background is dark */
+    min-width: 25px;
+    text-align: center;
+}
+
+.total-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #000;
+    border-top: 2px solid #ffb703;
+    padding: 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 100;
+}
+
+.price-big {
+    color: #ffb703;
+    font-family: "Staatliches", sans-serif;
+    font-size: 28px;
+    margin-left: 10px;
+}
+
+.checkout-btn {
+    background: #ffb703;
+    border: none;
+    padding: 10px 25px;
+    font-family: "Staatliches", sans-serif;
+    font-size: 18px;
+    cursor: pointer;
+}
+#elab-order-form {
+padding-bottom: 40px;
+}
+
+#total-price {
+    transition: all 0.2s ease;
+}
+
+/* Optional: Add a class via JS to make it flash when updated */
+.price-bump {
+    transform: scale(1.2);
+    color: #fff;
+}
+
+.dashboard-header { 
+    border-bottom: 2px solid #ffcc00; 
+    padding-bottom: 10px; 
+    margin-bottom: 20px; 
+    text-align: center;
+}
+
+.orders-container{
+    display: flex;
+    flex-direction: column; /* Stack cards vertically */
+    align-items: center;    /* Center them horizontally */
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+
+
+.order-card { 
+    background: #000000;
+    border: 1px solid #333; 
+    border-left: 4px solid #ffcc00; /* ELAB yellow accent strip */
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+    position: relative;
+    font-family: 'Merriweather', serif;
+    width: 90%;             /* Responsive width */
+    max-width: 450px;       /* Keeps it from getting too big */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5); /* Adds depth */
+}
+
+/* Style the Name and Price to pop */
+.order-card h2 {
+    font-family: 'Staatliches', sans-serif;
+    color: #ffcc00;
+    margin: 0 0 5px 0;
+    letter-spacing: 1px;
+}
+
+.order-details p {
+    margin: 5px 0;
+    font-size: 0.9rem;
+    color: #eee;
+}
+
+.order-details strong {
+    color: #ffcc00;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
+}
+ .order-name {
+    color: #ffcc00;
+    font-size: 1.5rem;
+    margin: 0; }
+
+ .order-details { 
+    font-family: 'Merriweather',serif; 
+    color: #ccc; 
+    margin: 10px 0; 
+    line-height: 1.6; }
+        
+        
+ .proof-img { 
+    width: 100%;
+    max-width: 300px; 
+    border-radius: 5px; 
+    margin-top: 10px; 
+    border: 1px solid #ffcc00; 
+    cursor: pointer; }
+        
+        
+.status-badge {
+    position: absolute; 
+    top: 15px; 
+    right: 15px; 
+    background: #ffcc00; 
+    color: black; 
+    padding: 2px 8px; 
+    border-radius: 4px; 
+    font-size: 0.8rem; }
+
+    .list-container {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    overflow-x: auto; /* Allow scrolling on small phones */
+}
+
+.order-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #111;
+    font-family: 'Merriweather', serif;
+    font-size: 0.85rem;
+}
+
+.order-table th {
+    background: #000;
+    color: #ffcc00;
+    font-family: 'Staatliches', sans-serif;
+    text-align: left;
+    padding: 12px;
+    border-bottom: 2px solid #ffcc00;
+    letter-spacing: 1px;
+}
+
+.order-table td {
+    padding: 10px 12px;
+    border-bottom: 1px solid #222;
+    color: #eee;
+}
+
+/* Zebra Stripe */
+.order-table tr:nth-child(even) {
+    background: #080808;
+}
+
+.order-table tr:hover {
+    background: #1a1a1a; /* Highlight row on hover */
+}
+
+/* Make the thumbnail tiny in the list */
+.list-img {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 4px;
+    cursor: pointer;
+    border: 1px solid #333;
+}
+
+.list-img:hover {
+    transform: scale(4); /* Pop out when hovered */
+    position: relative;
+    z-index: 10;
+}
+
+.done-btn {
+    background: #39ff14; /* Neon Green */
+    color: black;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-family: 'Staatliches', sans-serif;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.done-btn:hover {
+    background: #2ecc71;
+    transform: scale(1.05);
+}
+
+.reject-btn {
+    background: #ff4444; /* Bright Red */
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-family: 'Staatliches', sans-serif;
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+.reject-btn:hover {
+    background: #cc0000;
+    transform: scale(1.05);
+}
+
+.delete-btn {
+    background: #ff4444;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-family: 'Staatliches', sans-serif;
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.delete-btn:hover {
+    background: #b30000;
+    transform: scale(1.05);
+}
+
+/* ===== BULLETIN BOARD STYLES ===== */
+.bulletin-board-section {
+    padding: 60px 20px;
+    background: linear-gradient(135deg, #f5f5f5 0%, #fff 100%);
+}
+
+.bulletin-title {
+    font-family: "Staatliches", sans-serif;
+    font-size: 50px;
+    color: #000;
+    text-align: center;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+}
+
+.bulletin-subtitle {
+    font-family: "Merriweather", serif;
+    font-size: 16px;
+    color: #666;
+    text-align: center;
+    margin-bottom: 50px;
+    font-style: italic;
+}
+
+.announcements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.announcement-card {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    border-top: 5px solid #ffb703;
+}
+
+.announcement-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(255, 183, 3, 0.2);
+}
+
+.announcement-image {
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+}
+
+.announcement-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.announcement-card:hover .announcement-image img {
+    transform: scale(1.05);
+}
+
+.announcement-content {
+    padding: 20px;
+}
+
+.announcement-title {
+    font-family: "Staatliches", sans-serif;
+    font-size: 22px;
+    color: #ffb703;
+    margin: 0 0 10px 0;
+    letter-spacing: 1px;
+}
+
+.announcement-description {
+    font-family: "Merriweather", serif;
+    font-size: 14px;
+    color: #555;
+    line-height: 1.6;
+    margin: 0 0 15px 0;
+}
+
+.announcement-date {
+    font-family: "Merriweather", serif;
+    font-size: 12px;
+    color: #999;
+    margin: 0 0 15px 0;
+}
+
+.no-announcements {
+    text-align: center;
+    padding: 60px 20px;
+    font-family: "Merriweather", serif;
+    font-size: 18px;
+    color: #666;
+}
+
+/* ===== LOGIN FORM STYLES ===== */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 60vh;
+    padding: 20px;
+    background: linear-gradient(135deg, #f5f5f5 0%, #fff 100%);
+}
+
+.login-box {
+    background: white;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+    max-width: 400px;
+    width: 100%;
+    border-top: 5px solid #ffb703;
+}
+
+.login-box h2 {
+    font-family: "Staatliches", sans-serif;
+    font-size: 32px;
+    color: #000;
+    text-align: center;
+    margin-bottom: 30px;
+    letter-spacing: 1px;
+}
+
+#login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#login-form input {
+    padding: 15px;
+    border: 2px solid #eee;
+    border-radius: 4px;
+    font-family: "Merriweather", serif;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+#login-form input:focus {
+    outline: none;
+    border-color: #ffb703;
+    background: #fffcf0;
+}
+
+.login-btn {
+    padding: 15px;
+    background: #000;
+    color: #ffb703;
+    border: none;
+    border-radius: 4px;
+    font-family: "Staatliches", sans-serif;
+    font-size: 18px;
+    cursor: pointer;
+    transition: 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.login-btn:hover {
+    background: #ffb703;
+    color: #000;
+}
+
+.error-msg {
+    color: #ff4444;
+    font-family: "Merriweather", serif;
+    font-size: 13px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* ===== ANNOUNCEMENT FORM STYLES ===== */
+.announcement-form-container {
+    background: white;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    max-width: 600px;
+    margin: 40px auto;
+    border-top: 5px solid #ffb703;
+}
+
+.announcement-form-container h2 {
+    font-family: "Staatliches", sans-serif;
+    font-size: 32px;
+    color: #000;
+    text-align: center;
+    margin-bottom: 30px;
+    letter-spacing: 1px;
+}
+
+#announcement-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#announcement-form input,
+#announcement-form textarea {
+    padding: 15px;
+    border: 2px solid #eee;
+    border-radius: 4px;
+    font-family: "Merriweather", serif;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+#announcement-form input:focus,
+#announcement-form textarea:focus {
+    outline: none;
+    border-color: #ffb703;
+    background: #fffcf0;
+}
+
+#announcement-form textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.create-btn {
+    padding: 15px;
+    background: #000;
+    color: #ffb703;
+    border: none;
+    border-radius: 4px;
+    font-family: "Staatliches", sans-serif;
+    font-size: 18px;
+    cursor: pointer;
+    transition: 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.create-btn:hover {
+    background: #ffb703;
+    color: #000;
+}
+
+.message {
+    font-family: "Merriweather", serif;
+    font-size: 14px;
+    text-align: center;
+    margin-top: 10px;
+    color: #39ff14;
+}
+
+.message.error {
+    color: #ff4444;
+}
