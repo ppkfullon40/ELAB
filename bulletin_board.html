@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="elab.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Staatliches&display=swap">
+    <title>ELAB | Bulletin Board</title>
+</head>
+<body>
+    
+<nav class="navbar">
+        <a class="anav">ELAB</a>
+        <ul class="menu">
+            <li class="navtext"><a href="owner.html">HOME</a></li>
+            <li class="navtext"><a href="order_history.html">ORDERS</a></li>
+        </ul>
+    </nav>
+
+<div class="bulletin-board" style="max-width: 500px; margin: 40px auto; padding: 20px; text-align: center;">
+    <h2>Post Something in the bulletin board</h2>
+    <textarea id="announcement-text" placeholder="Type your Announcement here" style="width: 100%; height: 100px; margin-bottom: 15px; padding: 10px; box-sizing: border-box; font-family: 'Merriweather', serif;"></textarea>
+    <button id="post-btn" class="done-btn" onclick="postAnnouncement()">POST ANNOUNCEMENT</button>
+</div>
+
+<script type="module">
+    // FIXED: Added initializeApp import
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+
+    // FIXED: Injected your Firebase Credentials
+    const firebaseConfig = {
+        apiKey: "AIzaSyAVTxC5DoJs4apNkUEp6HgqJMOdNi_2Umw",
+        authDomain: "elab-orders.firebaseapp.com",
+        projectId: "elab-orders",
+        databaseURL: "https://elab-orders-default-rtdb.asia-southeast1.firebasedatabase.app/" 
+    };
+
+    // FIXED: Initialized app and database connections
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+
+    window.postAnnouncement = () => {
+        const text = document.getElementById('announcement-text').value;
+        if(!text) return alert("Write something first, bro!");
+        
+        const bulletinRef = ref(db, 'current_bulletin'); 
+        
+        set(bulletinRef, {
+            message: text,
+            timestamp: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})
+        })
+        .then(() => {
+            alert("Bulletin updated live!");
+            document.getElementById('announcement-text').value = ""; // Clear box
+        })
+        .catch((err) => {
+            alert("Error posting bulletin: " + err.message);
+        });
+    };
+</script>
+
+</body>
+</html>
